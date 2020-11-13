@@ -2,6 +2,7 @@ package com.nguyen.entities;
 
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
@@ -18,7 +19,7 @@ public class Account {
     private String ownerName;
     private double babance;
     
-    @OneToMany(mappedBy = "account")
+    @OneToMany(mappedBy = "account", fetch = FetchType.EAGER)
     private List<Bank> banks;
     
     

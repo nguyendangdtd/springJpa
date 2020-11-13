@@ -24,6 +24,7 @@ public class Bank {
     private long id;
     private String bankAddress;
     private String bankName;
+
     @ManyToOne
     @JoinColumn(name = "account_fk")
     private Account account;
