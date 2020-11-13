@@ -1,7 +1,9 @@
 package com.nguyen.entities;
 
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -15,6 +17,18 @@ public class Account {
     private long id;
     private String ownerName;
     private double babance;
+    
+    @OneToMany(mappedBy = "account")
+    private List<Bank> banks;
+    
+    
+    public List<Bank> getBanks() {
+        return banks;
+    }
+
+    public void setBanks(List<Bank> banks) {
+        this.banks = banks;
+    }
 
     public long getId() {
         return id;
