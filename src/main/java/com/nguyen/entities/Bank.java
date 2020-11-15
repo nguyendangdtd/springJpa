@@ -5,12 +5,17 @@
  */
 package com.nguyen.entities;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -20,24 +25,20 @@ import javax.persistence.ManyToOne;
 public class Bank {
     
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     private String bankAddress;
     private String bankName;
 
-    @ManyToOne
-    @JoinColumn(name = "account_fk")
-    private Account account;
+    @OneToMany(mappedBy = "bank", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<Account> accounts;
 
-    public Account getAccount() {
-        return account;
+    public List<Account> getAccounts() {
+        return accounts;
     }
 
-    public void setAccount(Account account) {
-        this.account = account;
+    public void setAccounts(List<Account> accounts) {
+        this.accounts = accounts;
     }
-    
-    
 
     public long getId() {
         return id;
@@ -62,6 +63,12 @@ public class Bank {
     public void setBankName(String bankName) {
         this.bankName = bankName;
     }
-    
-    
+
+    @Override public String toString() {
+        return "Bank{" +
+            "id=" + id +
+            ", bankAddress='" + bankAddress + '\'' +
+            ", bankName='" + bankName +
+            '}';
+    }
 }

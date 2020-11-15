@@ -40,9 +40,4 @@ public class AccountServiceImpl implements AccountService {
         accountRepository.save(accTo);
     }
 
-    @Override
-    public void initAccountData(List<Account> accounts) {
-        accountRepository.saveAll(accounts);
-    }
-
 }

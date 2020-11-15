@@ -15,5 +15,4 @@ import java.util.List;
 public interface AccountService {
     void transfer(long fromAccountId, long toAccountId, double amount);
     Account getAccount (long accountId);
-    void initAccountData(List<Account> accounts);
 }

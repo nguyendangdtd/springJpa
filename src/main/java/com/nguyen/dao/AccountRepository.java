@@ -6,6 +6,8 @@
 package com.nguyen.dao;
 
 import com.nguyen.entities.Account;
+
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -13,4 +15,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author XV
  */
 public interface AccountRepository extends CrudRepository<Account, Long> {
+	Account findByAddressEquals(String address);
 }
